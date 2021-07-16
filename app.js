@@ -9,17 +9,11 @@ var usersRouter = require('./routes/users');
 
 var mongoose = require('mongoose');
 
-// mongodb+srv://kanmit:Notice2021@cluster0.yxz4y.mongodb.net/test?authSource=admin&replicaSet=atlas-inkbdl-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
-
-//DB_PROD=mongodb+srv://Holla_dev:s6euKsHTl7i7ii59@cititaksidb.d0whw.mongodb.net/CitiTaksiDB?retryWrites=true&w=majority
-
 // mongoose.connect('mongodb://localhost/node-rss', { promiseLibrary: require('bluebird'), useNewUrlParser: true , useUnifiedTopology: true })
 mongoose.connect('mongodb+srv://kanmit:Notice2021@cluster0.yxz4y.mongodb.net/test?authSource=admin&replicaSet=atlas-inkbdl-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', { promiseLibrary: require('bluebird'), useNewUrlParser: true , useUnifiedTopology: true })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
-// var graphqlHTTP = require('express-graphql');
-// const graphqlHTTP = require('express-graphql').graphqlHTTP;
 const { graphqlHTTP  } = require('express-graphql');
 
 var schema = require('./graphql/settingSchemas');
@@ -28,7 +22,7 @@ var cors = require("cors");
 var app = express();
 
 app.use('*', cors());
-// app.use(cors())
+
 
 app.use('/graphql', cors(), graphqlHTTP({
 // app.use('/graphql', graphqlHTTP({
@@ -36,10 +30,6 @@ app.use('/graphql', cors(), graphqlHTTP({
   rootValue: global,
   graphiql: true,
 }));
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
