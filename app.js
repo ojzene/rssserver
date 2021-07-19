@@ -13,8 +13,6 @@ mongoose.connect('mongodb+srv://kanmit:Notice2021@cluster0.yxz4y.mongodb.net/tes
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
-// var graphqlHTTP = require('express-graphql');
-// const graphqlHTTP = require('express-graphql').graphqlHTTP;
 const { graphqlHTTP  } = require('express-graphql');
 
 var schema = require('./graphql/settingSchemas');
@@ -23,7 +21,6 @@ var cors = require("cors");
 var app = express();
 
 app.use('*', cors());
-// app.use(cors())
 
 app.use('/graphql', cors(), graphqlHTTP({
   schema: schema,
@@ -35,7 +32,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
