@@ -8,8 +8,8 @@ var usersRouter = require('./routes/users');
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/node-rss', { promiseLibrary: require('bluebird'), useNewUrlParser: true , useUnifiedTopology: true, useFindAndModify: false })
-// mongoose.connect('mongodb+srv://kanmit:Notice2021@cluster0.yxz4y.mongodb.net/test?authSource=admin&replicaSet=atlas-inkbdl-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', { promiseLibrary: require('bluebird'), useNewUrlParser: true , useUnifiedTopology: true })
+// mongoose.connect('mongodb://localhost/node-rss', { promiseLibrary: require('bluebird'), useNewUrlParser: true , useUnifiedTopology: true, useFindAndModify: false })
+mongoose.connect('mongodb+srv://kanmit:Notice2021@cluster0.yxz4y.mongodb.net/test?authSource=admin&replicaSet=atlas-inkbdl-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', { promiseLibrary: require('bluebird'), useNewUrlParser: true , useUnifiedTopology: true, useFindAndModify: false })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
