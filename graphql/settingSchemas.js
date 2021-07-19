@@ -146,8 +146,9 @@ var mutation = new GraphQLObjectType({
             }
           },
           resolve(root, params) {
-            return SettingModel.findByIdAndUpdate(params.id, { blockFontSize: params.blockFontSize, headlineFontSize: params.headlineFontSize, headlineColor: params.headlineColor, blockColor: params.blockColor, blockBgColor: params.blockBgColor, blockWidth: params.blockWidth, blockHeight: params.blockHeight, updated_date: new Date() }, function (err) {
+            return SettingModel.findByIdAndUpdate(params.id, { blockFontSize: params.blockFontSize, headlineFontSize: params.headlineFontSize, headlineColor: params.headlineColor, blockColor: params.blockColor, blockBgColor: params.blockBgColor, blockWidth: params.blockWidth, blockHeight: params.blockHeight, updated_date: new Date() }, function (err, doc, res) {
               if (err) return next(err);
+              if (doc) return doc;
             });
           }
         },
@@ -170,7 +171,5 @@ var mutation = new GraphQLObjectType({
     }
   });
 
-
-module.exports = new GraphQLSchema({query: queryType});
 
 module.exports = new GraphQLSchema({query: queryType, mutation: mutation});
